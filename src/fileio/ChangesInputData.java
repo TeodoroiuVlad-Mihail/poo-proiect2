@@ -7,17 +7,20 @@ import java.util.ArrayList;
 public class ChangesInputData {
 
     private double newSantaBudget;
-    private ArrayList<Gift> newGifts;
+    private ArrayList<GiftsInputData> newGifts;
     private ArrayList<ChildrenInputData> newChildren;
     private ArrayList<ChildrenUpdatesInputData> childrenUpdates;
+    private String strategy;
 
-    public ChangesInputData(final double newSantaBudget, final ArrayList<Gift> newGifts,
+    public ChangesInputData(final double newSantaBudget, final ArrayList<GiftsInputData> newGifts,
                             final ArrayList<ChildrenInputData> newChildren,
-                            final ArrayList<ChildrenUpdatesInputData> childrenUpdates) {
+                            final ArrayList<ChildrenUpdatesInputData> childrenUpdates,
+                            final String strategy) {
         this.newSantaBudget = newSantaBudget;
         this.newGifts = newGifts;
         this.newChildren = newChildren;
         this.childrenUpdates = childrenUpdates;
+        this.strategy = strategy;
     }
 
     /**
@@ -37,14 +40,14 @@ public class ChangesInputData {
     /**
      * setter for new gifts
      */
-    public ArrayList<Gift> getNewGifts() {
+    public ArrayList<GiftsInputData> getNewGifts() {
         return newGifts;
     }
 
     /**
      * setter for new gifts
      */
-    public void setNewGifts(final ArrayList<Gift> newGifts) {
+    public void setNewGifts(final ArrayList<GiftsInputData> newGifts) {
         this.newGifts = newGifts;
     }
 
@@ -74,5 +77,19 @@ public class ChangesInputData {
      */
     public void setChildrenUpdates(final ArrayList<ChildrenUpdatesInputData> childrenUpdates) {
         this.childrenUpdates = childrenUpdates;
+    }
+
+    /**
+     * setter for strategy
+     */
+    public String getStrategy() {
+        return strategy;
+    }
+
+    /**
+     * setter for strategy
+     */
+    public void setStrategy(String strategy) {
+        this.strategy = strategy;
     }
 }

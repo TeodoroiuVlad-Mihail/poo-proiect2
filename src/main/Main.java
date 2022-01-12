@@ -15,6 +15,7 @@ import org.json.simple.JSONObject;
 
 import reading.Changes;
 import reading.Children;
+import reading.Gift;
 import reading.Gifts;
 
 import writing.Write;
@@ -119,11 +120,16 @@ public final class Main {
             ArrayList<ChildrenUpdatesInputData> childrenUpdates =
                     changesList.getChanges().get(i - 1).getChildrenUpdates();
 
+            Gifts newGifts = new Gifts(changesList.getChanges().get(i - 1).getNewGifts());
+
+            String strategy = changesList.getChanges().get(i - 1).getStrategy();
+
             client = new Client(children, santaBudget, santaGiftsList,
-                    newChildren, childrenUpdates);
+                    newChildren, childrenUpdates, newGifts, strategy);
 
             client.executeAction("GrowChildren");
             client.executeAction("AddChildren");
+            client.executeAction("AddGifts");
             client.executeAction("RemoveYoungAdults");
             client.executeAction("UpdateChildren");
             client.executeAction("CalculateAverageScore");

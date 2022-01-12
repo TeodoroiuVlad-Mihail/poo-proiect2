@@ -159,12 +159,31 @@ public final class InputLoader {
                         childrenUpdates = null;
                     }
 
+                    JSONArray jsonNewGifts =
+                            ((JSONArray) ((JSONObject) jsonChange).get("newGifts"));
+                    ArrayList<GiftsInputData> newGifts = new ArrayList<>();
+
+                    if (jsonNewGifts != null) {
+                        for (Object jsonNewGift : jsonNewGifts) {
+                            newGifts.add(new GiftsInputData(
+                                    (String) ((JSONObject) jsonNewGift).get("productName"),
+                                    (double) ((long) ((JSONObject) jsonNewGift).get("price")),
+                                    (String) ((JSONObject) jsonNewGift).get("category"),
+                                    (int) ((long) ((JSONObject) jsonNewGift).get("quantity"))
+                            ));
+                        }
+                    }
+
+                    if (jsonNewGifts == null) {
+                        newGifts = null;
+                    }
+
                     changes.add(new ChangesInputData(
                             (double) ((long) ((JSONObject) jsonChange).get("newSantaBudget")),
-                            (ArrayList<Gift>) ((JSONArray) ((JSONObject) jsonChange)
-                                    .get("newGifts")),
+                            newGifts,
                             newChildren,
-                            childrenUpdates
+                            childrenUpdates,
+                            (String) ((JSONObject) jsonChange).get("strategy")
                     ));
                 }
             } else {

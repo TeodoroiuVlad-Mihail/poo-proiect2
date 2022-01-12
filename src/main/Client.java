@@ -9,10 +9,13 @@ import commands.GiveChildrenGifts;
 import commands.GrowChildren;
 import commands.RemoveYoungAdults;
 import commands.UpdateChildren;
+import commands.AddGifts;
 
 import fileio.ChildrenInputData;
 import fileio.ChildrenUpdatesInputData;
+import fileio.GiftsInputData;
 import reading.Children;
+import reading.Gift;
 import reading.Gifts;
 
 import java.util.ArrayList;
@@ -29,6 +32,8 @@ public class Client {
     private Gifts gifts;
     private ArrayList<ChildrenInputData> newChildren;
     private ArrayList<ChildrenUpdatesInputData> childrenUpdates;
+    private Gifts newGifts;
+    private String strategy;
 
     Client(final Children children, final double santaBudget, final Gifts gifts) {
         invoker = new Invoker();
@@ -44,13 +49,16 @@ public class Client {
     //with different arguments
     Client(final Children children, final double santaBudget, final Gifts gifts,
            final ArrayList<ChildrenInputData> newChildren,
-           final ArrayList<ChildrenUpdatesInputData> childrenUpdates) {
+           final ArrayList<ChildrenUpdatesInputData> childrenUpdates,
+           final Gifts newGifts, final String strategy) {
         invoker = new Invoker();
         this.children = children;
         this.santaBudget = santaBudget;
         this.gifts = gifts;
         this.newChildren = newChildren;
         this.childrenUpdates = childrenUpdates;
+        this.newGifts = newGifts;
+        this.strategy = strategy;
     }
 
     /**
@@ -91,7 +99,7 @@ public class Client {
                 return new CalculateChildrenBudget(children, santaBudget);
             }
             case GIVE_CHILDREN_GIFTS: {
-                return new GiveChildrenGifts(children, gifts);
+                return new GiveChildrenGifts(children, gifts, strategy);
             }
             case GROW_CHILDREN: {
                 return new GrowChildren(children);
@@ -101,6 +109,9 @@ public class Client {
             }
             case UPDATE_CHILDREN: {
                 return new UpdateChildren(children, childrenUpdates);
+            }
+            case ADD_GIFTS: {
+                return new AddGifts(gifts, newGifts);
             }
             default:
                 return null;

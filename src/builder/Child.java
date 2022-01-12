@@ -17,6 +17,7 @@ public class Child {
     private List<Double> niceScoreHistory;
     private double assignedBudget;
     private List<Gift> receivedGifts;
+    private double cityScore; //here solely so we can sort them with this
 
     public Child(final ChildBuilder childBuilder) {
         this.id = childBuilder.id;
@@ -169,6 +170,20 @@ public class Child {
      */
     public void setReceivedGifts(final List<Gift> receivedGifts) {
         this.receivedGifts = receivedGifts;
+    }
+
+    /**
+     * getter for city score
+     */
+    public double getCityScore() {
+        return cityScore;
+    }
+
+    /**
+     * setter for city score
+     */
+    public void setCityScore(double cityScore) {
+        this.cityScore = cityScore;
     }
 
     /**
