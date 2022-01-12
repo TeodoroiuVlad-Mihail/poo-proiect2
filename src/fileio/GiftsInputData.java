@@ -4,11 +4,14 @@ public class GiftsInputData {
     private String productName;
     private double price;
     private String category;
+    private int quantity;
 
-    public GiftsInputData(final String productName, final double price, final String category) {
+    public GiftsInputData(final String productName, final double price, final String category,
+                          final int quantity) {
         this.productName = productName;
         this.price = price;
         this.category = category;
+        this.quantity = quantity;
     }
 
     /**
@@ -51,5 +54,19 @@ public class GiftsInputData {
      */
     public void setCategory(final String category) {
         this.category = category;
+    }
+
+    /**
+     * getter for quantity
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * getter for quantity
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

@@ -4,11 +4,14 @@ public class Gift {
     private String productName;
     private double price;
     private String category;
+    private int quantity;
 
-    public Gift(final String productName, final double price, final String category) {
+    public Gift(final String productName, final double price, final String category,
+                final int quantity) {
         this.productName = productName;
         this.price = price;
         this.category = category;
+        this.quantity = quantity;
     }
 
     /**
@@ -54,7 +57,22 @@ public class Gift {
     }
 
     /**
+     * getter for quantity
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * getter for quantity
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    /**
      * toString for gifts, modified to fit output
+     * doesn't include quantity for obvious reasons
      */
     @Override
     public String toString() {

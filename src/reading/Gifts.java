@@ -14,14 +14,13 @@ public class Gifts {
 
     public Gifts(final List<GiftsInputData> list) {
         for (GiftsInputData i : list) {
-            Gift gift = new Gift(i.getProductName(), i.getPrice(), i.getCategory());
+            Gift gift = new Gift(i.getProductName(), i.getPrice(), i.getCategory(), i.getQuantity());
             gifts.add(gift);
         }
     }
 
     /**
-     * get the private gift list, would have not been needed if the checker didn't require for
-     * gifts to be private -_-
+     * get the private gift list
      */
     public ArrayList<Gift> getGifts() {
         return gifts;

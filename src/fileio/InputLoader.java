@@ -93,7 +93,8 @@ public final class InputLoader {
                     gifts.add(new GiftsInputData(
                             (String) ((JSONObject) jsonGift).get(Constants.PRODUCTNAME),
                             (double) ((long) ((JSONObject) jsonGift).get(Constants.PRICE)),
-                            (String) ((JSONObject) jsonGift).get(Constants.CATEGORY)
+                            (String) ((JSONObject) jsonGift).get(Constants.CATEGORY),
+                            (int) ((long) ((JSONObject) jsonGift).get("quantity"))
                     ));
                 }
             } else {

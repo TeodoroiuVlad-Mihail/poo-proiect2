@@ -40,8 +40,9 @@ public class GiveChildrenGifts implements AnnualUpdateCommand {
                 for (int k = 0; k < gifts.getGifts().size(); k++) {
                     double giftPrice = gifts.getGifts().get(k).getPrice();
                     String giftCategory = gifts.getGifts().get(k).getCategory();
+                    int giftQuantity = gifts.getGifts().get(k).getQuantity();
                     if (remainingBudget >= giftPrice && giftPreference.compareTo(giftCategory) == 0
-                            && giftPrice < mostExpensive) {
+                            && giftPrice < mostExpensive && giftQuantity > 0) {
                         mostExpensive = giftPrice;
                         cheapestGift = gifts.getGifts().get(k);
                     }
@@ -50,6 +51,7 @@ public class GiveChildrenGifts implements AnnualUpdateCommand {
                 if (cheapestGift != null) {
                     giftsList.add(cheapestGift);
                     remainingBudget = remainingBudget - cheapestGift.getPrice();
+                    cheapestGift.setQuantity(cheapestGift.getQuantity() - 1);
                 }
 
             }
