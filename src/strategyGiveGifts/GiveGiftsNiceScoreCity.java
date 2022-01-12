@@ -43,7 +43,6 @@ public class GiveGiftsNiceScoreCity implements StrategyGiveGifts{
             children.getChildren().get(i).setCityScore(cityScore);
         }
 
-
         children.getChildren().sort(new NiceScoreCitySorter());
 
 
