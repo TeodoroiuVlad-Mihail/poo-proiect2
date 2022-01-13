@@ -51,8 +51,7 @@ public class UpdateChildren implements AnnualUpdateCommand {
                                 childUpdates.getGiftsPreferences().get(k));
                     }
 
-                    //because of test12, apparently in the gift preferences updates
-                    //there can be duplicates, thanks guys, very fun
+                    //there can be duplicates in the updates, so,  remove them, again
                     for (int k = 0; k < child.getGiftsPreferences().size(); k++) {
                         for (int l = 0; l < child.getGiftsPreferences().size(); l++) {
                             if (child.getGiftsPreferences().get(k).compareTo(
@@ -63,7 +62,7 @@ public class UpdateChildren implements AnnualUpdateCommand {
                         }
                     }
 
-                    if (childUpdates.getElf() != null){
+                    if (childUpdates.getElf() != null) {
                         child.setElf(childUpdates.getElf());
                     }
 

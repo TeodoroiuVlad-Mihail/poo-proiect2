@@ -1,16 +1,11 @@
 package commands;
 
-import common.Constants;
 import reading.Children;
-import reading.Gift;
 import reading.Gifts;
-import strategyGiveGifts.Context;
-import strategyGiveGifts.GiveGiftsId;
-import strategyGiveGifts.GiveGiftsNiceScore;
-import strategyGiveGifts.GiveGiftsNiceScoreCity;
-
-import java.util.ArrayList;
-import java.util.List;
+import strategy.Context;
+import strategy.GiveGiftsId;
+import strategy.GiveGiftsNiceScore;
+import strategy.GiveGiftsNiceScoreCity;
 
 /**
  * gives gifts to the children

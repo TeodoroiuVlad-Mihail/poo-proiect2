@@ -21,7 +21,8 @@ public class ChildrenInputData {
 
     public ChildrenInputData(final int id, final String lastName, final String firstName,
                              final String city, final int age, final List<String> giftsPreferences,
-                             final double niceScoreBonus, final String elf, final double niceScore) {
+                             final double niceScoreBonus, final String elf,
+                             final double niceScore) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;
@@ -116,7 +117,7 @@ public class ChildrenInputData {
     /**
      * setter for nice score bonus
      */
-    public void setNiceScoreBonus(double niceScoreBonus) {
+    public void setNiceScoreBonus(final double niceScoreBonus) {
         this.niceScoreBonus = niceScoreBonus;
     }
 
@@ -130,7 +131,7 @@ public class ChildrenInputData {
     /**
      * getter for elf
      */
-    public void setElf(String elf) {
+    public void setElf(final String elf) {
         this.elf = elf;
     }
 

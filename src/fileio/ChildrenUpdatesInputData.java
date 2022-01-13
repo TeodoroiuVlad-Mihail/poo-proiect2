@@ -68,7 +68,7 @@ public class ChildrenUpdatesInputData {
     /**
      * getter for elf
      */
-    public void setElf(String elf) {
+    public void setElf(final String elf) {
         this.elf = elf;
     }
 

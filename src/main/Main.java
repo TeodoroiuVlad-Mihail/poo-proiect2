@@ -4,7 +4,6 @@ import checker.Checker;
 
 import common.Constants;
 
-import fileio.ChildrenInputData;
 import fileio.ChildrenUpdatesInputData;
 import fileio.Input;
 import fileio.InputLoader;
@@ -15,7 +14,6 @@ import org.json.simple.JSONObject;
 
 import reading.Changes;
 import reading.Children;
-import reading.Gift;
 import reading.Gifts;
 
 import writing.Write;

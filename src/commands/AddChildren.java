@@ -24,8 +24,9 @@ public class AddChildren implements AnnualUpdateCommand {
                 if (newChild.getId() < children.getChildren().get(i).getId()) {
                     children.getChildren().add(i, new Child.ChildBuilder(newChild.getId(),
                             newChild.getLastName(), newChild.getFirstName(), newChild.getCity(),
-                            newChild.getAge(), newChild.getGiftsPreferences(), newChild.getNiceScoreBonus(),
-                            newChild.getElf(), newChild.getAverageScore())
+                            newChild.getAge(), newChild.getGiftsPreferences(),
+                            newChild.getNiceScoreBonus(), newChild.getElf(),
+                            newChild.getAverageScore())
                             .niceScoreHistory(newChild.getNiceScoreHistory())
                             .assignedBudget(newChild.getAssignedBudget())
                             .receivedGifts(newChild.getReceivedGifts())

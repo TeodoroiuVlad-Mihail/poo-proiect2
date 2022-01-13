@@ -14,7 +14,8 @@ public class Gifts {
 
     public Gifts(final List<GiftsInputData> list) {
         for (GiftsInputData i : list) {
-            Gift gift = new Gift(i.getProductName(), i.getPrice(), i.getCategory(), i.getQuantity());
+            Gift gift = new Gift(i.getProductName(), i.getPrice(), i.getCategory(),
+                    i.getQuantity());
             gifts.add(gift);
         }
     }

@@ -2,6 +2,7 @@ package commands;
 
 
 import builder.Child;
+import common.Constants;
 import reading.Children;
 
 public class CalculateChildrenBudget implements AnnualUpdateCommand {
@@ -31,10 +32,12 @@ public class CalculateChildrenBudget implements AnnualUpdateCommand {
             double assignedBudget = averageScore * budgetUnit;
             String elf = children.getChildren().get(i).getElf();
             if (elf.compareTo("black") == 0) {
-                assignedBudget = assignedBudget - assignedBudget * 30 / 100;
+                assignedBudget = assignedBudget
+                        - assignedBudget * Constants.BLACKELFPENALTY / Constants.HUNDRED;
             }
             if (elf.compareTo("pink") == 0) {
-                assignedBudget = assignedBudget + assignedBudget * 30 / 100;
+                assignedBudget = assignedBudget
+                        + assignedBudget * Constants.PINKELFBONUS / Constants.HUNDRED;
             }
             children.getChildren().get(i).setAssignedBudget(assignedBudget);
         }

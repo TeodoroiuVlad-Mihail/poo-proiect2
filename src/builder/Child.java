@@ -130,7 +130,7 @@ public class Child {
     /**
      * setter for nice score bonus
      */
-    public void setNiceScoreBonus(double niceScoreBonus) {
+    public void setNiceScoreBonus(final double niceScoreBonus) {
         this.niceScoreBonus = niceScoreBonus;
     }
 
@@ -144,7 +144,7 @@ public class Child {
     /**
      * getter for elf
      */
-    public void setElf(String elf) {
+    public void setElf(final String elf) {
         this.elf = elf;
     }
 
@@ -214,7 +214,7 @@ public class Child {
     /**
      * setter for city score
      */
-    public void setCityScore(double cityScore) {
+    public void setCityScore(final double cityScore) {
         this.cityScore = cityScore;
     }
 

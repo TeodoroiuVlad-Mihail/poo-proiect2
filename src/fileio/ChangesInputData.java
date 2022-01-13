@@ -1,7 +1,5 @@
 package fileio;
 
-import reading.Gift;
-
 import java.util.ArrayList;
 
 public class ChangesInputData {
@@ -89,7 +87,7 @@ public class ChangesInputData {
     /**
      * setter for strategy
      */
-    public void setStrategy(String strategy) {
+    public void setStrategy(final String strategy) {
         this.strategy = strategy;
     }
 }

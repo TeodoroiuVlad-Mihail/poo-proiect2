@@ -91,7 +91,7 @@ public class Change {
     /**
      * setter for strategy
      */
-    public void setStrategy(String strategy) {
+    public void setStrategy(final String strategy) {
         this.strategy = strategy;
     }
 }

@@ -1,4 +1,4 @@
-package strategyGiveGifts;
+package strategy;
 
 import common.Constants;
 import reading.Children;
@@ -8,12 +8,18 @@ import reading.Gifts;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GiveGiftsNiceScore implements StrategyGiveGifts{
+public class GiveGiftsId implements StrategyGiveGifts {
+
+    /**
+     * Distributes the gifts in the order of the id
+     */
     @Override
-    public void giveGifts(Children children, Gifts gifts) {
+    public void giveGifts(final Children children, final Gifts gifts) {
+        distributeGifts(children, gifts);
+    }
 
-        children.getChildren().sort(new NiceScoreSorter());
-
+    //Because we are going to use this code in other strategies too, we will be making it a method
+    static void distributeGifts(final Children children, final Gifts gifts) {
         for (int i = 0; i < children.getChildren().size(); i++) {
             double remainingBudget = children.getChildren().get(i).getAssignedBudget();
             List<Gift> giftsList = new ArrayList<>();
@@ -43,7 +49,7 @@ public class GiveGiftsNiceScore implements StrategyGiveGifts{
 
             }
 
-            if(giftsList.isEmpty()
+            if (giftsList.isEmpty()
                     && children.getChildren().get(i).getElf().compareTo("yellow") == 0) {
                 String giftPreference = giftsPreferences.get(0);
                 double mostExpensive = Constants.BIGFOFFNUMBER;
@@ -67,7 +73,5 @@ public class GiveGiftsNiceScore implements StrategyGiveGifts{
             }
             children.getChildren().get(i).setReceivedGifts(giftsList);
         }
-
-        children.getChildren().sort(new IdSorter());
     }
 }
