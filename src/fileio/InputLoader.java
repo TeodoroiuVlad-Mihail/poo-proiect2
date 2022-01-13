@@ -75,6 +75,8 @@ public final class InputLoader {
                             (int) ((long) ((JSONObject) jsonChild).get(Constants.AGE)),
                             Utils.convertJSONArray((JSONArray) ((JSONObject) jsonChild)
                                     .get(Constants.GIFTSPREFERENCES)),
+                            (double) ((long) ((JSONObject) jsonChild).get("niceScoreBonus")),
+                            (String) ((JSONObject) jsonChild).get("elf"),
                             (int) ((long) ((JSONObject) jsonChild).get(Constants.NICESCORE))
                     ));
                 }
@@ -123,6 +125,9 @@ public final class InputLoader {
                                     (int) ((long) ((JSONObject) jsonNewChild).get(Constants.AGE)),
                                     Utils.convertJSONArray((JSONArray) ((JSONObject) jsonNewChild)
                                             .get(Constants.GIFTSPREFERENCES)),
+                                    (double) ((long)
+                                            ((JSONObject) jsonNewChild).get("niceScoreBonus")),
+                                    (String) ((JSONObject) jsonNewChild).get("elf"),
                                     (int) ((long)
                                             ((JSONObject) jsonNewChild).get(Constants.NICESCORE))
                             ));
@@ -150,7 +155,8 @@ public final class InputLoader {
                                     niceScore,
                                     Utils.convertJSONArray((JSONArray)
                                             ((JSONObject) jsonChildrenUpdate)
-                                            .get(Constants.GIFTSPREFERENCES))
+                                            .get(Constants.GIFTSPREFERENCES)),
+                                    (String) ((JSONObject) jsonChildrenUpdate).get("elf")
                             ));
                         }
                     }

@@ -114,8 +114,8 @@ public final class Main {
         for (int i = 1; i <= numberOfYears; i++) {
             santaBudget = changesList.getChanges().get(i - 1).getNewSantaBudget();
 
-            ArrayList<ChildrenInputData> newChildren =
-                    changesList.getChanges().get(i - 1).getNewChildren();
+            Children newChildren =
+                    new Children(changesList.getChanges().get(i - 1).getNewChildren());
 
             ArrayList<ChildrenUpdatesInputData> childrenUpdates =
                     changesList.getChanges().get(i - 1).getChildrenUpdates();

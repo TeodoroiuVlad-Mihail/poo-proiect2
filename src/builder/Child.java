@@ -12,6 +12,8 @@ public class Child {
     private String city;
     private int age;
     private List<String> giftsPreferences;
+    private double niceScoreBonus;
+    private String elf;
     private double averageScore;
     //optional (the ones not mandatory for child "creation")
     private List<Double> niceScoreHistory;
@@ -26,6 +28,8 @@ public class Child {
         this.city = childBuilder.city;
         this.age = childBuilder.age;
         this.giftsPreferences = childBuilder.giftsPreferences;
+        this.niceScoreBonus = childBuilder.niceScoreBonus;
+        this.elf = childBuilder.elf;
         this.averageScore = childBuilder.averageScore;
         this.niceScoreHistory = childBuilder.niceScoreHistory;
         this.assignedBudget = childBuilder.assignedBudget;
@@ -102,6 +106,7 @@ public class Child {
         this.age = age;
     }
 
+
     /**
      * getter for assigned gift preferences
      */
@@ -114,6 +119,33 @@ public class Child {
      */
     public void setGiftsPreferences(final List<String> giftsPreferences) {
         this.giftsPreferences = giftsPreferences;
+    }
+
+    /**
+     * getter for nice score bonus
+     */
+    public double getNiceScoreBonus() {
+        return niceScoreBonus;
+    }
+    /**
+     * setter for nice score bonus
+     */
+    public void setNiceScoreBonus(double niceScoreBonus) {
+        this.niceScoreBonus = niceScoreBonus;
+    }
+
+    /**
+     * setter for elf
+     */
+    public String getElf() {
+        return elf;
+    }
+
+    /**
+     * getter for elf
+     */
+    public void setElf(String elf) {
+        this.elf = elf;
     }
 
     /**
@@ -230,6 +262,8 @@ public class Child {
         private String city;
         private int age;
         private List<String> giftsPreferences;
+        private double niceScoreBonus;
+        private String elf;
         private double averageScore;
         //optional (the ones not mandatory for child "creation")
         private List<Double> niceScoreHistory = null;
@@ -238,6 +272,7 @@ public class Child {
 
         public ChildBuilder(final int id, final String lastName, final String firstName,
                             final String city, final int age, final List<String> giftsPreferences,
+                            final double niceScoreBonus, final String elf,
                             final double averageScore) {
             this.id = id;
             this.lastName = lastName;
@@ -245,6 +280,8 @@ public class Child {
             this.city = city;
             this.age = age;
             this.giftsPreferences = giftsPreferences;
+            this.niceScoreBonus = niceScoreBonus;
+            this.elf = elf;
             this.averageScore = averageScore;
         }
 

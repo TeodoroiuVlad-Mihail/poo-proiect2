@@ -40,6 +40,17 @@ public class CalculateAverageScore implements AnnualUpdateCommand {
                 child.setAverageScore(averageScore);
             }
 
+            averageScore = child.getAverageScore();
+            double niceScoreBonus = child.getNiceScoreBonus();
+            if( niceScoreBonus > 0) {
+                averageScore += averageScore * niceScoreBonus / 100;
+            }
+            if (averageScore > 10) {
+                averageScore = 10;
+            }
+
+            child.setAverageScore(averageScore);
+
         }
     }
 }

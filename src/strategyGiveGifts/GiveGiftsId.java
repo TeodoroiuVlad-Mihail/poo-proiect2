@@ -39,6 +39,31 @@ public class GiveGiftsId implements StrategyGiveGifts{
                 }
 
             }
+
+            if(giftsList.isEmpty()
+                    && children.getChildren().get(i).getElf().compareTo("yellow") == 0) {
+                String giftPreference = giftsPreferences.get(0);
+                double mostExpensive = Constants.BIGFOFFNUMBER;
+                Gift cheapestGift = null; //placeholder, needs to be initialized
+
+                //search for the cheapest gift
+                for (int k = 0; k < gifts.getGifts().size(); k++) {
+                    double giftPrice = gifts.getGifts().get(k).getPrice();
+                    String giftCategory = gifts.getGifts().get(k).getCategory();
+                    int giftQuantity = gifts.getGifts().get(k).getQuantity();
+                    if (giftPreference.compareTo(giftCategory) == 0
+                            && giftPrice < mostExpensive && giftQuantity > 0) {
+                        mostExpensive = giftPrice;
+                        cheapestGift = gifts.getGifts().get(k);
+                        k = gifts.getGifts().size();
+                    }
+                }
+                if (cheapestGift != null) {
+                    giftsList.add(cheapestGift);
+                    cheapestGift.setQuantity(cheapestGift.getQuantity() - 1);
+                }
+
+            }
             children.getChildren().get(i).setReceivedGifts(giftsList);
         }
     }

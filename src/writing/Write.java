@@ -24,7 +24,8 @@ public class Write {
             Child child = children.getChildren().get(i);
             Child copyChild = new Child.ChildBuilder(child.getId(), child.getLastName(),
                     child.getFirstName(), child.getCity(), child.getAge(),
-                    new ArrayList<>(child.getGiftsPreferences()), child.getAverageScore())
+                    new ArrayList<>(child.getGiftsPreferences()), child.getNiceScoreBonus(),
+                    child.getElf(), child.getAverageScore())
                     .niceScoreHistory(new ArrayList<>(child.getNiceScoreHistory()))
                     .assignedBudget(child.getAssignedBudget())
                     .receivedGifts(new ArrayList<>(child.getReceivedGifts()))

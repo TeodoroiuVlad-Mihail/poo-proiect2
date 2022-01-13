@@ -63,6 +63,10 @@ public class UpdateChildren implements AnnualUpdateCommand {
                         }
                     }
 
+                    if (childUpdates.getElf() != null){
+                        child.setElf(childUpdates.getElf());
+                    }
+
 
                 }
 

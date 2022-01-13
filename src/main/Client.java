@@ -30,7 +30,7 @@ public class Client {
     private Children children;
     private double santaBudget;
     private Gifts gifts;
-    private ArrayList<ChildrenInputData> newChildren;
+    private Children newChildren;
     private ArrayList<ChildrenUpdatesInputData> childrenUpdates;
     private Gifts newGifts;
     private String strategy;
@@ -48,7 +48,7 @@ public class Client {
     //This is iirc overloading, something about using the same name for constructor but
     //with different arguments
     Client(final Children children, final double santaBudget, final Gifts gifts,
-           final ArrayList<ChildrenInputData> newChildren,
+           Children newChildren,
            final ArrayList<ChildrenUpdatesInputData> childrenUpdates,
            final Gifts newGifts, final String strategy) {
         invoker = new Invoker();
