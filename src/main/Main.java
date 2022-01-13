@@ -99,12 +99,14 @@ public final class Main {
 
         //Calculate stuff and print for the year 0
 
-        Client client = new Client(children, santaBudget, santaGiftsList);
+        Singleton santa = Singleton.getInstance();
 
-        client.executeAction("RemoveYoungAdults");
-        client.executeAction("CalculateAverageScore");
-        client.executeAction("CalculateChildrenBudget");
-        client.executeAction("GiveChildrenGifts");
+        santa.setClient(new Client(children, santaBudget, santaGiftsList));
+
+        santa.getClient().executeAction("RemoveYoungAdults");
+        santa.getClient().executeAction("CalculateAverageScore");
+        santa.getClient().executeAction("CalculateChildrenBudget");
+        santa.getClient().executeAction("GiveChildrenGifts");
         object = write.returnChildren();
         arrayResult.add(arrayResult.size(), object);
 
@@ -122,17 +124,17 @@ public final class Main {
 
             String strategy = changesList.getChanges().get(i - 1).getStrategy();
 
-            client = new Client(children, santaBudget, santaGiftsList,
-                    newChildren, childrenUpdates, newGifts, strategy);
+            santa.setClient(new Client(children, santaBudget, santaGiftsList,
+                    newChildren, childrenUpdates, newGifts, strategy));
 
-            client.executeAction("GrowChildren");
-            client.executeAction("AddChildren");
-            client.executeAction("AddGifts");
-            client.executeAction("RemoveYoungAdults");
-            client.executeAction("UpdateChildren");
-            client.executeAction("CalculateAverageScore");
-            client.executeAction("CalculateChildrenBudget");
-            client.executeAction("GiveChildrenGifts");
+            santa.getClient().executeAction("GrowChildren");
+            santa.getClient().executeAction("AddChildren");
+            santa.getClient().executeAction("AddGifts");
+            santa.getClient().executeAction("RemoveYoungAdults");
+            santa.getClient().executeAction("UpdateChildren");
+            santa.getClient().executeAction("CalculateAverageScore");
+            santa.getClient().executeAction("CalculateChildrenBudget");
+            santa.getClient().executeAction("GiveChildrenGifts");
             object = write.returnChildren();
             arrayResult.add(arrayResult.size(), object);
         }

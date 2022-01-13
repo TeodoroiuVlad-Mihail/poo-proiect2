@@ -3,8 +3,13 @@ Teodoroiu Vlad-Mihail
 325CA
 
 Pentru comenzi de schimbare de date, am folosit Command Pattern
+
 Iar pentru "creerea" copiilor, am folosit Builder Pattern
+
 Pentru modalitatea de a da cadouri, folosim Strategy Pattern
+
+Folosind Singleton Pattern, am creat un sinlgeton santa care va tine minte toate datele
+de pe un an, adica va avea ca si camp client-ul de la Command Pattern
 
 foldere din src:
 
