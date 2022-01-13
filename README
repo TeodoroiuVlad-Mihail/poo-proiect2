@@ -6,6 +6,7 @@ Pentru comenzi de schimbare de date, am folosit Command Pattern
 Iar pentru "creerea" copiilor, am folosit Builder Pattern
 Pentru modalitatea de a da cadouri, folosim Strategy Pattern
 
+ACEST UPLOAD ESTE IN MARE PARTE DOAR PENTRU A UPLOAD-A 60/60 IN CAZ CA UIT PANA LA DEADLINE
 
 foldere din src:
 

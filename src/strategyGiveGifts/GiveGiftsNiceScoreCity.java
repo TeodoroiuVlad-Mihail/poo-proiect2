@@ -84,15 +84,13 @@ public class GiveGiftsNiceScoreCity implements StrategyGiveGifts{
                 for (int k = 0; k < gifts.getGifts().size(); k++) {
                     double giftPrice = gifts.getGifts().get(k).getPrice();
                     String giftCategory = gifts.getGifts().get(k).getCategory();
-                    int giftQuantity = gifts.getGifts().get(k).getQuantity();
                     if (giftPreference.compareTo(giftCategory) == 0
-                            && giftPrice < mostExpensive && giftQuantity > 0) {
+                            && giftPrice < mostExpensive) {
                         mostExpensive = giftPrice;
                         cheapestGift = gifts.getGifts().get(k);
-                        k = gifts.getGifts().size();
                     }
                 }
-                if (cheapestGift != null) {
+                if (cheapestGift != null && cheapestGift.getQuantity() > 0) {
                     giftsList.add(cheapestGift);
                     cheapestGift.setQuantity(cheapestGift.getQuantity() - 1);
                 }
