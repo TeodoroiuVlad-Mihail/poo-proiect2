@@ -9,8 +9,8 @@ import commands.GiveChildrenGifts;
 import commands.GrowChildren;
 import commands.RemoveYoungAdults;
 import commands.UpdateChildren;
+import commands.AddGifts;
 
-import fileio.ChildrenInputData;
 import fileio.ChildrenUpdatesInputData;
 import reading.Children;
 import reading.Gifts;
@@ -27,8 +27,10 @@ public class Client {
     private Children children;
     private double santaBudget;
     private Gifts gifts;
-    private ArrayList<ChildrenInputData> newChildren;
+    private Children newChildren;
     private ArrayList<ChildrenUpdatesInputData> childrenUpdates;
+    private Gifts newGifts;
+    private String strategy;
 
     Client(final Children children, final double santaBudget, final Gifts gifts) {
         invoker = new Invoker();
@@ -43,14 +45,16 @@ public class Client {
     //This is iirc overloading, something about using the same name for constructor but
     //with different arguments
     Client(final Children children, final double santaBudget, final Gifts gifts,
-           final ArrayList<ChildrenInputData> newChildren,
-           final ArrayList<ChildrenUpdatesInputData> childrenUpdates) {
+           final Children newChildren, final ArrayList<ChildrenUpdatesInputData> childrenUpdates,
+           final Gifts newGifts, final String strategy) {
         invoker = new Invoker();
         this.children = children;
         this.santaBudget = santaBudget;
         this.gifts = gifts;
         this.newChildren = newChildren;
         this.childrenUpdates = childrenUpdates;
+        this.newGifts = newGifts;
+        this.strategy = strategy;
     }
 
     /**
@@ -80,30 +84,30 @@ public class Client {
 
     private AnnualUpdateCommand getCommand(final CommandType type)
             throws IllegalArgumentException {
-        switch (type) {
-            case ADD_CHILDREN: {
-                return new AddChildren(children, newChildren);
-            }
-            case CALCULATE_AVERAGE_SCORE: {
-                return new CalculateAverageScore(children);
-            }
-            case CALCULATE_CHILDREN_BUDGET: {
-                return new CalculateChildrenBudget(children, santaBudget);
-            }
-            case GIVE_CHILDREN_GIFTS: {
-                return new GiveChildrenGifts(children, gifts);
-            }
-            case GROW_CHILDREN: {
-                return new GrowChildren(children);
-            }
-            case REMOVE_YOUNG_ADULTS: {
-                return new RemoveYoungAdults(children);
-            }
-            case UPDATE_CHILDREN: {
-                return new UpdateChildren(children, childrenUpdates);
-            }
-            default:
-                return null;
+        if (type.compareTo(CommandType.ADD_CHILDREN) == 0) {
+            return new AddChildren(children, newChildren);
         }
+        if (type.compareTo(CommandType.CALCULATE_AVERAGE_SCORE) == 0) {
+            return new CalculateAverageScore(children);
+        }
+        if (type.compareTo(CommandType.CALCULATE_CHILDREN_BUDGET) == 0) {
+            return new CalculateChildrenBudget(children, santaBudget);
+        }
+        if (type.compareTo(CommandType.GIVE_CHILDREN_GIFTS) == 0) {
+            return new GiveChildrenGifts(children, gifts, strategy);
+        }
+        if (type.compareTo(CommandType.GROW_CHILDREN) == 0) {
+            return new GrowChildren(children);
+        }
+        if (type.compareTo(CommandType.REMOVE_YOUNG_ADULTS) == 0) {
+            return new RemoveYoungAdults(children);
+        }
+        if (type.compareTo(CommandType.UPDATE_CHILDREN) == 0) {
+            return new UpdateChildren(children, childrenUpdates);
+        }
+        if (type.compareTo(CommandType.ADD_GIFTS) == 0) {
+            return new AddGifts(gifts, newGifts);
+        }
+        return null;
     }
 }

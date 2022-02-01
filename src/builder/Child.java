@@ -12,11 +12,14 @@ public class Child {
     private String city;
     private int age;
     private List<String> giftsPreferences;
+    private double niceScoreBonus;
+    private String elf;
     private double averageScore;
     //optional (the ones not mandatory for child "creation")
     private List<Double> niceScoreHistory;
     private double assignedBudget;
     private List<Gift> receivedGifts;
+    private double cityScore; //here solely so we can sort them with this
 
     public Child(final ChildBuilder childBuilder) {
         this.id = childBuilder.id;
@@ -25,6 +28,8 @@ public class Child {
         this.city = childBuilder.city;
         this.age = childBuilder.age;
         this.giftsPreferences = childBuilder.giftsPreferences;
+        this.niceScoreBonus = childBuilder.niceScoreBonus;
+        this.elf = childBuilder.elf;
         this.averageScore = childBuilder.averageScore;
         this.niceScoreHistory = childBuilder.niceScoreHistory;
         this.assignedBudget = childBuilder.assignedBudget;
@@ -101,6 +106,7 @@ public class Child {
         this.age = age;
     }
 
+
     /**
      * getter for assigned gift preferences
      */
@@ -113,6 +119,33 @@ public class Child {
      */
     public void setGiftsPreferences(final List<String> giftsPreferences) {
         this.giftsPreferences = giftsPreferences;
+    }
+
+    /**
+     * getter for nice score bonus
+     */
+    public double getNiceScoreBonus() {
+        return niceScoreBonus;
+    }
+    /**
+     * setter for nice score bonus
+     */
+    public void setNiceScoreBonus(final double niceScoreBonus) {
+        this.niceScoreBonus = niceScoreBonus;
+    }
+
+    /**
+     * setter for elf
+     */
+    public String getElf() {
+        return elf;
+    }
+
+    /**
+     * getter for elf
+     */
+    public void setElf(final String elf) {
+        this.elf = elf;
     }
 
     /**
@@ -172,6 +205,20 @@ public class Child {
     }
 
     /**
+     * getter for city score
+     */
+    public double getCityScore() {
+        return cityScore;
+    }
+
+    /**
+     * setter for city score
+     */
+    public void setCityScore(final double cityScore) {
+        this.cityScore = cityScore;
+    }
+
+    /**
      * to also format the preferences properly
      */
     public String giftsToString(final List<String> pGiftsPreferences) {
@@ -215,6 +262,8 @@ public class Child {
         private String city;
         private int age;
         private List<String> giftsPreferences;
+        private double niceScoreBonus;
+        private String elf;
         private double averageScore;
         //optional (the ones not mandatory for child "creation")
         private List<Double> niceScoreHistory = null;
@@ -223,6 +272,7 @@ public class Child {
 
         public ChildBuilder(final int id, final String lastName, final String firstName,
                             final String city, final int age, final List<String> giftsPreferences,
+                            final double niceScoreBonus, final String elf,
                             final double averageScore) {
             this.id = id;
             this.lastName = lastName;
@@ -230,6 +280,8 @@ public class Child {
             this.city = city;
             this.age = age;
             this.giftsPreferences = giftsPreferences;
+            this.niceScoreBonus = niceScoreBonus;
+            this.elf = elf;
             this.averageScore = averageScore;
         }
 

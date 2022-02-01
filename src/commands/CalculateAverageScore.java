@@ -1,7 +1,7 @@
 package commands;
 
-import common.Constants;
 import builder.Child;
+import common.Constants;
 import reading.Children;
 
 public class CalculateAverageScore implements AnnualUpdateCommand {
@@ -39,6 +39,17 @@ public class CalculateAverageScore implements AnnualUpdateCommand {
                 averageScore = averageScore / ponderSum;
                 child.setAverageScore(averageScore);
             }
+
+            averageScore = child.getAverageScore();
+            double niceScoreBonus = child.getNiceScoreBonus();
+            if (niceScoreBonus > 0) {
+                averageScore += averageScore * niceScoreBonus / Constants.HUNDRED;
+            }
+            if (averageScore > Constants.TEN) {
+                averageScore = Constants.TEN;
+            }
+
+            child.setAverageScore(averageScore);
 
         }
     }

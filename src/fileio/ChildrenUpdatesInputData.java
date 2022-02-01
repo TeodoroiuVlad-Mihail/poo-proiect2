@@ -6,12 +6,14 @@ public class ChildrenUpdatesInputData {
     private int id;
     private double niceScore;
     private List<String> giftsPreferences;
+    private String elf;
 
     public ChildrenUpdatesInputData(final int id, final double niceScore,
-                                    final List<String> giftsPreferences) {
+                                    final List<String> giftsPreferences, final String elf) {
         this.id = id;
         this.niceScore = niceScore;
         this.giftsPreferences = giftsPreferences;
+        this.elf = elf;
     }
 
     /**
@@ -54,6 +56,20 @@ public class ChildrenUpdatesInputData {
      */
     public void setGiftsPreferences(final List<String> giftsPreferences) {
         this.giftsPreferences = giftsPreferences;
+    }
+
+    /**
+     * setter for elf
+     */
+    public String getElf() {
+        return elf;
+    }
+
+    /**
+     * getter for elf
+     */
+    public void setElf(final String elf) {
+        this.elf = elf;
     }
 
 }

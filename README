@@ -1,10 +1,15 @@
-Proiect 1 Etapa 1 POO
+Proiect 1 Etapa 2 POO
 Teodoroiu Vlad-Mihail
 325CA
 
 Pentru comenzi de schimbare de date, am folosit Command Pattern
+
 Iar pentru "creerea" copiilor, am folosit Builder Pattern
 
+Pentru modalitatea de a da cadouri, folosim Strategy Pattern
+
+Folosind Singleton Pattern, am creat un sinlgeton santa care va tine minte toate datele
+de pe un an, adica va avea ca si camp client-ul de la Command Pattern
 
 foldere din src:
 
@@ -44,10 +49,7 @@ under toate comenzile sunt stocate
 	transforma un string cu numele comenzii cerute in comanda propiu-zisa
 	
 	GiveChildrenGifts
-	trece prin fiecare copil, apoi trece prin lista lor de preferinte si cauta cel mai ieftin
-	cadou care poate fi cumparat pentru fiecare preferinta
-	daca exista un asemena cadou si poate fi cumparat, este adaugat, daca nu, nu este nici un
-	cadou adaugat pentru acea preferinta
+	invoca strategia specifica de dare de cadouri, aflata in folderul strategy
 	
 	GrowChildren
 	crete varsta pentru fiecare copil cu 1, nimic mult de spus
@@ -156,6 +158,40 @@ contine Write
 	Da stiu e similar in nume cu Writer, cred ca ar fi mers mai bine numele de ToJson dar
 	pentru ca a fost preluat si modificat din skeletul pentru tema 1(cred) l-am pastrat asa
 	cel putin e intr-un alt folder
+	
+strategy
+aici se afla design pattern-ul strategy pentru darea cadourilor
+
+	Context
+	context-ul pentru strategy
+	
+	GiveGiftsId
+	strategia de dare de cadorui in ordinea id-urilor
+		distributeGifts
+		este o metoda folosita de toate 3 strategiile dupa si intainte de sortarea copiilor
+		in functie de prioritate
+		trece prin fiecare copil, apoi trece prin lista lor de preferinte si cauta cel mai ieftin
+		cadou care poate fi cumparat pentru fiecare preferinta
+		daca exista un asemena cadou si poate fi cumparat, este adaugat, daca nu, nu este nici un
+		cadou adaugat pentru acea preferinta
+		
+	GiveGiftsNiceScore
+	strategia de dare de cadorui in ordinea descendenta a nice-scorului individual
+	
+	GiveGiftsCityNiceScore
+	strategia de dare de cadorui in ordinea descendenta a nice-scorului pe oras
+	
+	IdSorter
+	comparator in funcite de id, ascendent
+	
+	NiceScoreCitySorter
+	comparator in functie de scorul orasului, descendent
+	
+	NiceScoreSorter
+	comparator in functie de scorul individual, descendent
+	
+	StrategyGiveGifts
+	interfata prin care se accesseaza cele 3 strategi de dare de cadouri la copii
 	
 
 Multumesc mult pentru rabdarea acordata sa cititi acest readme.

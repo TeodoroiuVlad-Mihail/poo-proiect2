@@ -66,7 +66,7 @@ public class Gift {
     /**
      * getter for quantity
      */
-    public void setQuantity(int quantity) {
+    public void setQuantity(final int quantity) {
         this.quantity = quantity;
     }
 

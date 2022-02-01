@@ -1,13 +1,2 @@
 Starting audit...
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\fileio\GiftsInputData.java:69:29: Parameter quantity should be final. [FinalParameters]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\main\Client.java:84:32: Avoid nested blocks. [AvoidNestedBlocks]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\main\Client.java:87:43: Avoid nested blocks. [AvoidNestedBlocks]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\main\Client.java:90:45: Avoid nested blocks. [AvoidNestedBlocks]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\main\Client.java:93:39: Avoid nested blocks. [AvoidNestedBlocks]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\main\Client.java:96:33: Avoid nested blocks. [AvoidNestedBlocks]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\main\Client.java:99:39: Avoid nested blocks. [AvoidNestedBlocks]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\main\Client.java:102:35: Avoid nested blocks. [AvoidNestedBlocks]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\reading\Gift.java:69:29: Parameter quantity should be final. [FinalParameters]
-[ERROR] C:\Users\Vlad\IdeaProjects\poo proiect2\.\src\reading\Gifts.java:17: Line is longer than 100 characters (found 101). [LineLength]
 Audit done.
-Checkstyle ends with 10 errors.

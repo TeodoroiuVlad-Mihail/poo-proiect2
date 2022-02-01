@@ -16,7 +16,8 @@ public class Children {
     public Children(final List<ChildrenInputData> list) {
         for (ChildrenInputData i : list) {
             Child child = new Child.ChildBuilder(i.getId(), i.getLastName(), i.getFirstName(),
-                    i.getCity(), i.getAge(), i.getGiftsPreferences(), i.getAverageScore())
+                    i.getCity(), i.getAge(), i.getGiftsPreferences(), i.getNiceScoreBonus(),
+                    i.getElf(), i.getAverageScore())
                     .niceScoreHistory(i.getNiceScoreHistory())
                     .assignedBudget(i.getAssignedBudget())
                     .receivedGifts(i.getReceivedGifts())

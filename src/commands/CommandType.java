@@ -10,7 +10,8 @@ public enum CommandType {
     GIVE_CHILDREN_GIFTS("GiveChildrenGifts"),
     GROW_CHILDREN("GrowChildren"),
     REMOVE_YOUNG_ADULTS("RemoveYoungAdults"),
-    UPDATE_CHILDREN("UpdateChildren");
+    UPDATE_CHILDREN("UpdateChildren"),
+    ADD_GIFTS("AddGifts");
 
     private final String text;
 

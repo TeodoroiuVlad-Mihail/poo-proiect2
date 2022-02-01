@@ -4,7 +4,6 @@ import checker.Checker;
 
 import common.Constants;
 
-import fileio.ChildrenInputData;
 import fileio.ChildrenUpdatesInputData;
 import fileio.Input;
 import fileio.InputLoader;
@@ -100,12 +99,14 @@ public final class Main {
 
         //Calculate stuff and print for the year 0
 
-        Client client = new Client(children, santaBudget, santaGiftsList);
+        Singleton santa = Singleton.getInstance();
 
-        client.executeAction("RemoveYoungAdults");
-        client.executeAction("CalculateAverageScore");
-        client.executeAction("CalculateChildrenBudget");
-        client.executeAction("GiveChildrenGifts");
+        santa.setClient(new Client(children, santaBudget, santaGiftsList));
+
+        santa.getClient().executeAction("RemoveYoungAdults");
+        santa.getClient().executeAction("CalculateAverageScore");
+        santa.getClient().executeAction("CalculateChildrenBudget");
+        santa.getClient().executeAction("GiveChildrenGifts");
         object = write.returnChildren();
         arrayResult.add(arrayResult.size(), object);
 
@@ -113,22 +114,27 @@ public final class Main {
         for (int i = 1; i <= numberOfYears; i++) {
             santaBudget = changesList.getChanges().get(i - 1).getNewSantaBudget();
 
-            ArrayList<ChildrenInputData> newChildren =
-                    changesList.getChanges().get(i - 1).getNewChildren();
+            Children newChildren =
+                    new Children(changesList.getChanges().get(i - 1).getNewChildren());
 
             ArrayList<ChildrenUpdatesInputData> childrenUpdates =
                     changesList.getChanges().get(i - 1).getChildrenUpdates();
 
-            client = new Client(children, santaBudget, santaGiftsList,
-                    newChildren, childrenUpdates);
+            Gifts newGifts = new Gifts(changesList.getChanges().get(i - 1).getNewGifts());
 
-            client.executeAction("GrowChildren");
-            client.executeAction("AddChildren");
-            client.executeAction("RemoveYoungAdults");
-            client.executeAction("UpdateChildren");
-            client.executeAction("CalculateAverageScore");
-            client.executeAction("CalculateChildrenBudget");
-            client.executeAction("GiveChildrenGifts");
+            String strategy = changesList.getChanges().get(i - 1).getStrategy();
+
+            santa.setClient(new Client(children, santaBudget, santaGiftsList,
+                    newChildren, childrenUpdates, newGifts, strategy));
+
+            santa.getClient().executeAction("GrowChildren");
+            santa.getClient().executeAction("AddChildren");
+            santa.getClient().executeAction("AddGifts");
+            santa.getClient().executeAction("RemoveYoungAdults");
+            santa.getClient().executeAction("UpdateChildren");
+            santa.getClient().executeAction("CalculateAverageScore");
+            santa.getClient().executeAction("CalculateChildrenBudget");
+            santa.getClient().executeAction("GiveChildrenGifts");
             object = write.returnChildren();
             arrayResult.add(arrayResult.size(), object);
         }

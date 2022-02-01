@@ -5,11 +5,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import reading.Gift;
 import utils.Utils;
 
 import java.io.FileInputStream;
-// import java.io.FileReader; no longer needed because of a fixed error
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -47,10 +45,6 @@ public final class InputLoader {
         ArrayList<ChangesInputData> changes = new ArrayList<>();
 
         try {
-            //I think THIS "gave the Unexpected character () at position 0." error
-            //JSONObject jsonObject = (JSONObject) jsonParser
-                    //.parse(new FileReader(inputPath));
-
             // Parsing the contents of the JSON file
             JSONObject jsonObject = (JSONObject) jsonParser.
                     parse(new InputStreamReader(new FileInputStream(inputPath)));
@@ -66,18 +60,7 @@ public final class InputLoader {
             JSONArray jsonGifts = (JSONArray) initialData.get(Constants.SANTAGIFTSLIST);
 
             if (jsonChildren != null) {
-                for (Object jsonChild : jsonChildren) {
-                    children.add(new ChildrenInputData(
-                            (int) ((long) ((JSONObject) jsonChild).get(Constants.ID)),
-                            (String) ((JSONObject) jsonChild).get(Constants.LASTNAME),
-                            (String) ((JSONObject) jsonChild).get(Constants.FIRSTNAME),
-                            (String) ((JSONObject) jsonChild).get(Constants.CITY),
-                            (int) ((long) ((JSONObject) jsonChild).get(Constants.AGE)),
-                            Utils.convertJSONArray((JSONArray) ((JSONObject) jsonChild)
-                                    .get(Constants.GIFTSPREFERENCES)),
-                            (int) ((long) ((JSONObject) jsonChild).get(Constants.NICESCORE))
-                    ));
-                }
+                readChildren(children, jsonChildren);
             } else {
                 System.out.println("NU EXISTA COPII");
             }
@@ -87,16 +70,8 @@ public final class InputLoader {
             }
 
             //now to read the gifts
-
             if (jsonGifts != null) {
-                for (Object jsonGift : jsonGifts) {
-                    gifts.add(new GiftsInputData(
-                            (String) ((JSONObject) jsonGift).get(Constants.PRODUCTNAME),
-                            (double) ((long) ((JSONObject) jsonGift).get(Constants.PRICE)),
-                            (String) ((JSONObject) jsonGift).get(Constants.CATEGORY),
-                            (int) ((long) ((JSONObject) jsonGift).get("quantity"))
-                    ));
-                }
+                readGifts(gifts, jsonGifts);
             } else {
                 System.out.println("NU EXISTA CADOURI");
             }
@@ -114,19 +89,7 @@ public final class InputLoader {
                             ((JSONArray) ((JSONObject) jsonChange).get("newChildren"));
                     ArrayList<ChildrenInputData> newChildren = new ArrayList<>();
                     if (jsonNewChildren != null) {
-                        for (Object jsonNewChild : jsonNewChildren) {
-                            newChildren.add(new ChildrenInputData(
-                                    (int) ((long) ((JSONObject) jsonNewChild).get(Constants.ID)),
-                                    (String) ((JSONObject) jsonNewChild).get(Constants.LASTNAME),
-                                    (String) ((JSONObject) jsonNewChild).get(Constants.FIRSTNAME),
-                                    (String) ((JSONObject) jsonNewChild).get(Constants.CITY),
-                                    (int) ((long) ((JSONObject) jsonNewChild).get(Constants.AGE)),
-                                    Utils.convertJSONArray((JSONArray) ((JSONObject) jsonNewChild)
-                                            .get(Constants.GIFTSPREFERENCES)),
-                                    (int) ((long)
-                                            ((JSONObject) jsonNewChild).get(Constants.NICESCORE))
-                            ));
-                        }
+                        readChildren(newChildren, jsonNewChildren);
                     }
                     if (jsonNewChildren == null) {
                         newChildren = null;
@@ -150,7 +113,8 @@ public final class InputLoader {
                                     niceScore,
                                     Utils.convertJSONArray((JSONArray)
                                             ((JSONObject) jsonChildrenUpdate)
-                                            .get(Constants.GIFTSPREFERENCES))
+                                            .get(Constants.GIFTSPREFERENCES)),
+                                    (String) ((JSONObject) jsonChildrenUpdate).get("elf")
                             ));
                         }
                     }
@@ -159,12 +123,24 @@ public final class InputLoader {
                         childrenUpdates = null;
                     }
 
+                    JSONArray jsonNewGifts =
+                            ((JSONArray) ((JSONObject) jsonChange).get("newGifts"));
+                    ArrayList<GiftsInputData> newGifts = new ArrayList<>();
+
+                    if (jsonNewGifts != null) {
+                        readGifts(newGifts, jsonNewGifts);
+                    }
+
+                    if (jsonNewGifts == null) {
+                        newGifts = null;
+                    }
+
                     changes.add(new ChangesInputData(
                             (double) ((long) ((JSONObject) jsonChange).get("newSantaBudget")),
-                            (ArrayList<Gift>) ((JSONArray) ((JSONObject) jsonChange)
-                                    .get("newGifts")),
+                            newGifts,
                             newChildren,
-                            childrenUpdates
+                            childrenUpdates,
+                            (String) ((JSONObject) jsonChange).get("strategy")
                     ));
                 }
             } else {
@@ -180,6 +156,35 @@ public final class InputLoader {
         }
 
         return new Input(numberOfYears, santaBudget, children, gifts, changes);
+    }
+
+    void readChildren(final ArrayList<ChildrenInputData> children,
+                      final JSONArray jsonChildren) {
+        for (Object jsonChild : jsonChildren) {
+            children.add(new ChildrenInputData(
+                    (int) ((long) ((JSONObject) jsonChild).get(Constants.ID)),
+                    (String) ((JSONObject) jsonChild).get(Constants.LASTNAME),
+                    (String) ((JSONObject) jsonChild).get(Constants.FIRSTNAME),
+                    (String) ((JSONObject) jsonChild).get(Constants.CITY),
+                    (int) ((long) ((JSONObject) jsonChild).get(Constants.AGE)),
+                    Utils.convertJSONArray((JSONArray) ((JSONObject) jsonChild)
+                            .get(Constants.GIFTSPREFERENCES)),
+                    (double) ((long) ((JSONObject) jsonChild).get("niceScoreBonus")),
+                    (String) ((JSONObject) jsonChild).get("elf"),
+                    (int) ((long) ((JSONObject) jsonChild).get(Constants.NICESCORE))
+            ));
+        }
+    }
+
+    void readGifts(final ArrayList<GiftsInputData> gifts, final JSONArray jsonGifts) {
+        for (Object jsonNewGift : jsonGifts) {
+            gifts.add(new GiftsInputData(
+                    (String) ((JSONObject) jsonNewGift).get(Constants.PRODUCTNAME),
+                    (double) ((long) ((JSONObject) jsonNewGift).get(Constants.PRICE)),
+                    (String) ((JSONObject) jsonNewGift).get(Constants.CATEGORY),
+                    (int) ((long) ((JSONObject) jsonNewGift).get("quantity"))
+            ));
+        }
     }
 
 }

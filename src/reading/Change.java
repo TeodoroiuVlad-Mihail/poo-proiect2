@@ -2,23 +2,27 @@ package reading;
 
 import fileio.ChildrenInputData;
 import fileio.ChildrenUpdatesInputData;
+import fileio.GiftsInputData;
 
 import java.util.ArrayList;
 
 public class Change {
 
     private double newSantaBudget;
-    private ArrayList<Gift> newGifts;
+    private ArrayList<GiftsInputData> newGifts;
     private ArrayList<ChildrenInputData> newChildren;
     private ArrayList<ChildrenUpdatesInputData> childrenUpdates;
+    private String strategy;
 
-    public Change(final double newSantaBudget, final ArrayList<Gift> newGifts,
+    public Change(final double newSantaBudget, final ArrayList<GiftsInputData> newGifts,
                   final ArrayList<ChildrenInputData> newChildren,
-                  final ArrayList<ChildrenUpdatesInputData> childrenUpdates) {
+                  final ArrayList<ChildrenUpdatesInputData> childrenUpdates,
+                  final String strategy) {
         this.newSantaBudget = newSantaBudget;
         this.newGifts = newGifts;
         this.newChildren = newChildren;
         this.childrenUpdates = childrenUpdates;
+        this.strategy = strategy;
     }
 
     /**
@@ -38,14 +42,14 @@ public class Change {
     /**
      * setter for new gifts
      */
-    public ArrayList<Gift> getNewGifts() {
+    public ArrayList<GiftsInputData> getNewGifts() {
         return newGifts;
     }
 
     /**
      * setter for new gifts
      */
-    public void setNewGifts(final ArrayList<Gift> newGifts) {
+    public void setNewGifts(final ArrayList<GiftsInputData> newGifts) {
         this.newGifts = newGifts;
     }
 
@@ -75,5 +79,19 @@ public class Change {
      */
     public void setChildrenUpdates(final ArrayList<ChildrenUpdatesInputData> childrenUpdates) {
         this.childrenUpdates = childrenUpdates;
+    }
+
+    /**
+     * setter for strategy
+     */
+    public String getStrategy() {
+        return strategy;
+    }
+
+    /**
+     * setter for strategy
+     */
+    public void setStrategy(final String strategy) {
+        this.strategy = strategy;
     }
 }

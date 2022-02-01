@@ -41,6 +41,11 @@ public final class Constants {
     public static final int BABYDEFAULTSCORE = 10;
     public static final int BIGFOFFNUMBER = 100000000;
 
+    public static final int TEN = 10;
+    public static final double PINKELFBONUS = 30;
+    public static final double BLACKELFPENALTY = 30;
+    public static final double HUNDRED = 100;
+
 
     private Constants() {
         //constructor for checkstyle

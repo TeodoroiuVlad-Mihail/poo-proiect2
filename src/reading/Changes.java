@@ -15,7 +15,7 @@ public class Changes {
     public Changes(final List<ChangesInputData> list) {
         for (ChangesInputData i : list) {
             Change change = new Change(i.getNewSantaBudget(), i.getNewGifts(), i.getNewChildren(),
-                    i.getChildrenUpdates());
+                    i.getChildrenUpdates(), i.getStrategy());
             changes.add(change);
         }
     }

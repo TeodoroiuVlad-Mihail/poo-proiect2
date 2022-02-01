@@ -12,6 +12,8 @@ public class ChildrenInputData {
     private String city;
     private int age;
     private List<String> giftsPreferences;
+    private double niceScoreBonus;
+    private String elf;
     private double averageScore;
     private List<Double> niceScoreHistory;
     private double assignedBudget;
@@ -19,6 +21,7 @@ public class ChildrenInputData {
 
     public ChildrenInputData(final int id, final String lastName, final String firstName,
                              final String city, final int age, final List<String> giftsPreferences,
+                             final double niceScoreBonus, final String elf,
                              final double niceScore) {
         this.id = id;
         this.lastName = lastName;
@@ -26,6 +29,8 @@ public class ChildrenInputData {
         this.city = city;
         this.age = age;
         this.giftsPreferences = giftsPreferences;
+        this.niceScoreBonus = niceScoreBonus;
+        this.elf = elf;
         this.averageScore = niceScore;
         this.niceScoreHistory = new ArrayList<>();
         this.niceScoreHistory.add(niceScore);
@@ -101,6 +106,33 @@ public class ChildrenInputData {
      */
     public void setAge(final int age) {
         this.age = age;
+    }
+
+    /**
+     * getter for nice score bonus
+     */
+    public double getNiceScoreBonus() {
+        return niceScoreBonus;
+    }
+    /**
+     * setter for nice score bonus
+     */
+    public void setNiceScoreBonus(final double niceScoreBonus) {
+        this.niceScoreBonus = niceScoreBonus;
+    }
+
+    /**
+     * setter for elf
+     */
+    public String getElf() {
+        return elf;
+    }
+
+    /**
+     * getter for elf
+     */
+    public void setElf(final String elf) {
+        this.elf = elf;
     }
 
     /**
